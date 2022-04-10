@@ -1,5 +1,5 @@
-import math
 from numpy import array
+from numpy import cos
 
 class Task:
     def __init__(self):
@@ -8,7 +8,7 @@ class Task:
 
     @staticmethod
     def f(x: array):
-        return x[0] * x[0] + x[1] * x[1] + math.cos(2 * x[0] + 3 * x[1])
+        return x[0] * x[0] + x[1] * x[1] + cos(2 * x[0] + 3 * x[1])
 
 
     def f_count(self, x: array):
@@ -22,7 +22,3 @@ class Task:
     @staticmethod
     def initial_guess():
         return array([0, 0])
-
-
-task = Task()
-print(task.f_count(array([0, 0])))
