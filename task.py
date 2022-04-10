@@ -1,5 +1,5 @@
 from numpy import array
-from numpy import cos
+from numpy import cos, sin
 
 class Task:
     def __init__(self):
@@ -16,9 +16,30 @@ class Task:
         return Task.f(x)
 
 
+    @staticmethod
+    def delta_f(x: array):
+        sin_arg = 2 * x[0] + 3 * x[1]
+        return array([2 * x[0] - 2 * sin(sin_arg), 2 * x[1] - 3 * sin(sin_arg)])
+
+
+    def delta_f_count(self, x: array):
+        self.count += 1
+        return Task.delta_f(x)
+
+
     def get_count(self):
         return self.count
 
     @staticmethod
     def initial_guess():
         return array([0, 0])
+
+
+    @staticmethod
+    def grad1_params():
+        return (1, 0.7)
+
+
+    @staticmethod
+    def get_accuracies():
+        return [0.1, 0.01, 0.001]
