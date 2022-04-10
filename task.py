@@ -4,6 +4,7 @@ from numpy import cos, sin
 class Task:
     def __init__(self):
         self.count = 0
+        self.count1 = 0
 
 
     @staticmethod
@@ -17,27 +18,32 @@ class Task:
 
 
     @staticmethod
-    def delta_f(x: array):
+    def grad_f(x: array):
         sin_arg = 2 * x[0] + 3 * x[1]
         return array([2 * x[0] - 2 * sin(sin_arg), 2 * x[1] - 3 * sin(sin_arg)])
 
 
-    def delta_f_count(self, x: array):
-        self.count += 1
-        return Task.delta_f(x)
+    def grad_f_count(self, x: array):
+        self.count1 += 1
+        return Task.grad_f(x)
 
 
     def get_count(self):
         return self.count
 
+
+    def get_grad_count(self):
+        return self.count1
+
+
     @staticmethod
     def initial_guess():
-        return array([0, 0])
+        return array([-1, -1])
 
 
     @staticmethod
     def grad1_params():
-        return (1, 0.7)
+        return (0.1, 0.5)
 
 
     @staticmethod
