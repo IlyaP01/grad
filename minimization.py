@@ -16,6 +16,7 @@ def solve(name, solver):
             writer = csv.writer(csvfile)
             for point in storage.get_trace():
                 writer.writerow(point)
+            writer.writerow([x[0], x[1], f])
 
 
 print("First order:")
