@@ -5,8 +5,8 @@ class Storage:
         self.trace = []
 
 
-    def add(self, point: array, vec: array):
-        self.trace.append((point, vec))
+    def add(self, point: array):
+        self.trace.append(point)
 
 
     def get_trace(self):

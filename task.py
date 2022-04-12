@@ -38,12 +38,12 @@ class Task:
 
     @staticmethod
     def initial_guess():
-        return array([-1, -1])
+        return array([0.1, 0.1])
 
 
     @staticmethod
     def grad1_params():
-        return (0.1, 0.5)
+        return (0.5, 0.7)
 
 
     @staticmethod
