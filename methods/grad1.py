@@ -7,7 +7,7 @@ from numpy import array
 def solve(task: Task, storage: Storage, eps):
     x = task.initial_guess()
     f = task.f_count(x)
-    (l, v) = task.grad1_params()
+    (l, v, t) = task.grad1_params()
     while True:
         grad = task.grad_f_count(x)
         norm = linalg.norm(grad, ord=2)
@@ -17,7 +17,7 @@ def solve(task: Task, storage: Storage, eps):
         f1 = task.f_count(x)
         delta_f = f - f1
         f = f1
-        while abs(delta_f) < 0.5 * l * norm:
+        while abs(delta_f) < t * l * norm:
             l = v * l
             continue
         if abs(delta_f) <= eps:
