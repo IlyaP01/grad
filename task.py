@@ -19,8 +19,8 @@ class Task:
 
     @staticmethod
     def grad_f(x: array):
-        sin_arg = 2 * x[0] + 3 * x[1]
-        return array([2 * x[0] - 2 * sin(sin_arg), 2 * x[1] - 3 * sin(sin_arg)])
+        sinus = sin(2 * x[0] + 3 * x[1])
+        return array([2 * x[0] - 2 * sinus, 2 * x[1] - 3 * sinus])
 
 
     def grad_f_count(self, x: array):
