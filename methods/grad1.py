@@ -17,9 +17,9 @@ def solve(task: Task, storage: Storage, eps):
         f1 = task.f_count(x)
         delta_f = f - f1
         f = f1
+        if l <= eps:
+            break
         while abs(delta_f) < t * l * norm:
             l = v * l
             continue
-        if abs(delta_f) <= eps:
-            break
     return (x, f)
