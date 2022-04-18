@@ -1,25 +1,25 @@
-from pandas import array
 from task import Task
 from storage import Storage
-from numpy import linalg
-from numpy import array
+
+import numpy as np
+
 
 def solve(task: Task, storage: Storage, eps):
     x = task.initial_guess()
-    f = task.f_count(x)
-    (l, v, t) = task.grad1_params()
+    alpha0, _lambda, delta = task.grad1_params()
     while True:
         grad = task.grad_f_count(x)
-        norm = linalg.norm(grad, ord=2)
-        s = -grad / norm
-        storage.add(array([x[0], x[1], f]))
-        x = x + l * s
-        f1 = task.f_count(x)
-        delta_f = f - f1
-        f = f1
-        if l <= eps:
+        grad_norm = np.linalg.norm(grad, ord=2)
+        if grad_norm < eps:
             break
-        while abs(delta_f) < t * l * norm:
-            l = v * l
-            continue
-    return (x, f)
+
+        fk = task.f_count(x)
+        storage.add(np.array([x[0], x[1], fk]))
+        alpha = alpha0
+        grad_norm_2 = grad_norm ** 2
+        while task.f_count(x - alpha * grad) - fk > -delta * alpha * grad_norm_2:
+            alpha *= _lambda
+
+        x = x - alpha * grad
+
+    return x, fk
