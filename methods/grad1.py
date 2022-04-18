@@ -1,8 +1,8 @@
-from pandas import array
 from task import Task
 from storage import Storage
 from numpy import linalg
 from numpy import array
+
 
 def solve(task: Task, storage: Storage, eps):
     x = task.initial_guess()
@@ -22,4 +22,4 @@ def solve(task: Task, storage: Storage, eps):
         while abs(delta_f) < t * l * norm:
             l = v * l
             continue
-    return (x, f)
+    return x, f
