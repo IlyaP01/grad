@@ -1,1 +1,1 @@
-from methods import grad1
+from methods import grad1, grad2
