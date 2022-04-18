@@ -15,7 +15,7 @@ cs = ax.contour(X, Y, Z, levels=30)
 ax.clabel(cs, inline=1, fontsize=10)
 
 task = Task()
-eps = 0.1
+eps = 0.001
 storage1 = Storage()
 storage2 = Storage()
 grad1.solve(task, storage1, eps)
