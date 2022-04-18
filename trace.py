@@ -9,8 +9,8 @@ import csv
 
 fig = plt.figure()
 ax = fig.gca(projection='3d')
-X = np.arange(0, 1, 0.1)
-Y = np.arange(0, 1, 0.1)
+X = np.arange(-0.1, 1.11, 0.01)
+Y = np.arange(-0.1, 1.11, 0.01)
 X, Y = np.meshgrid(X, Y)
 Z = Task.f(np.array([X, Y]))
 cset = ax.contour(X, Y, Z, cmap=cm.coolwarm)
@@ -21,7 +21,7 @@ with open('data/grad1_0_1.csv', newline='') as csvfile:
     prev = [float(coord) for coord in next(reader)]
     for record in reader:
         cur = [float(coord) for coord in record]
-        ax.plot([prev[0], cur[0]], [prev[1], cur[1]], [prev[2], cur[2]], '-k', linewidth=1)
+        ax.plot([prev[0], cur[0]], [prev[1], cur[1]], [prev[2], cur[2]], '-*k', linewidth=1)
         print(prev, cur)
         prev = cur
 
