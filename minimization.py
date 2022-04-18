@@ -3,6 +3,7 @@ from storage import Storage
 from methods import grad1, grad2
 
 import csv
+from scipy.optimize import minimize
 
 
 def solve(name, solver):
@@ -23,3 +24,5 @@ print("First order:")
 solve("grad1", grad1)
 print('BFGS:')
 solve("grad2", grad2)
+print('Scipy BFGS:', minimize(Task.f, Task.initial_guess()))
+
